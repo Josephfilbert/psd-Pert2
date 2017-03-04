@@ -42,5 +42,14 @@ namespace Pertemuan_2_PSD
             gvProduk.DataSource = dt;
             gvProduk.DataBind();
         }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            nama = txtNama.Text;
+            query = "DELETE FROM Product WHERE Name='" + nama + "'";
+
+            conn.ExecuteUpdate(query);
+            viewProductList();
+        }
     }
 }

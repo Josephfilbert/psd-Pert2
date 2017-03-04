@@ -27,7 +27,7 @@
                     <asp:Button ID="btnInsert" runat="server" Text="Insert" OnClick="btnInsert_Click"/>
                 </td>
                 <td>
-                    <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+                    <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
                 </td>
             </tr>
 
