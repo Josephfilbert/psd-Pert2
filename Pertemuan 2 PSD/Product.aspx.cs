@@ -13,5 +13,10 @@ namespace Pertemuan_2_PSD
         {
 
         }
+
+        protected void btnInsert_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
