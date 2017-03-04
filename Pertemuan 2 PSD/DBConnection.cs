@@ -9,7 +9,7 @@ namespace Pertemuan_2_PSD
 {
     public class DBConnection
     {
-        static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
         SqlConnection dbConnection;
 
         public DBConnection()
@@ -22,6 +22,11 @@ namespace Pertemuan_2_PSD
             //dbConnection.Close();
         }
 
+        /// <summary>
+        /// Executes query that returns DataTable
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public DataTable ExecuteQuery(string query)
         {
             /*
@@ -44,6 +49,25 @@ namespace Pertemuan_2_PSD
                 }
             }
             return dt;
+        }
+
+        /// <summary>
+        /// Executes query that does not return data
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public int ExecuteUpdate(string query)
+        {
+            int code;
+            using (dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+                using (SqlCommand command = new SqlCommand(query, dbConnection))
+                {
+                    code = command.ExecuteNonQuery();
+                }
+            }
+            return code;
         }
     }
 }

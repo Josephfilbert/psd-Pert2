@@ -19,16 +19,19 @@
             <tr>
                 <td>Harga :</td>
                 <td>
-                    <asp:TextBox ID="txtHarga" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtHarga" runat="server" TextMode="Number"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Button ID="btnInsert" runat="server" Text="Insert" OnClick="btnInsert_Click"/>
                 </td>
+                <td>
+                    <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+                </td>
             </tr>
 
-
+            <asp:GridView ID="gvProduk" runat="server"></asp:GridView>
         </table>
     </div>
     </form>
