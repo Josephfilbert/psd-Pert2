@@ -12,13 +12,14 @@ namespace Pertemuan_2_PSD
     {
         string nama;
         int harga;
-        DBConnection conn;
         string query;
         DataTable dt;
 
+        ItemHandler itemHandler;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            conn = new DBConnection();
+            itemHandler = new ItemHandler();
             viewProductList();
         }
 
@@ -27,17 +28,15 @@ namespace Pertemuan_2_PSD
             nama = txtNama.Text;
             harga = Convert.ToInt32(txtHarga.Text);
 
-            query = "INSERT INTO Product VALUES ('" + nama + "', " + harga + ")";
+            itemHandler.AddItem(new Barang(nama, harga));
 
-            conn.ExecuteUpdate(query);
             viewProductList();
 
         }
 
         void viewProductList()
         {
-            query = "SELECT * FROM Product";
-            dt = conn.ExecuteQuery(query);
+            dt = itemHandler.getItems();
 
             gvProduk.DataSource = dt;
             gvProduk.DataBind();
@@ -45,10 +44,7 @@ namespace Pertemuan_2_PSD
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            nama = txtNama.Text;
-            query = "DELETE FROM Product WHERE Name='" + nama + "'";
-
-            conn.ExecuteUpdate(query);
+            itemHandler.DeleteItem(txtNama.Text);
             viewProductList();
         }
     }

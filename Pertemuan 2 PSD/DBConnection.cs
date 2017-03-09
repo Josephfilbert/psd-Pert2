@@ -9,8 +9,7 @@ namespace Pertemuan_2_PSD
 {
     public class DBConnection
     {
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
-        SqlConnection dbConnection;
+        protected string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
 
         public DBConnection()
         {
@@ -37,7 +36,7 @@ namespace Pertemuan_2_PSD
              */
             DataTable dt = new DataTable();
 
-            using (dbConnection = new SqlConnection(connectionString))
+            using (SqlConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
                 using(SqlCommand command = new SqlCommand(query, dbConnection))
@@ -59,7 +58,7 @@ namespace Pertemuan_2_PSD
         public int ExecuteUpdate(string query)
         {
             int code;
-            using (dbConnection = new SqlConnection(connectionString))
+            using (SqlConnection dbConnection = new SqlConnection(connectionString))
             {
                 dbConnection.Open();
                 using (SqlCommand command = new SqlCommand(query, dbConnection))

@@ -116,7 +116,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barang.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="ItemHandler.cs" />
     <Compile Include="Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
